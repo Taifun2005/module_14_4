@@ -21,6 +21,8 @@ def initiate_db():
 
 
 def get_add_products(id, title, description, price, cursor=None):
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
     check_user = cursor.execute("SELECT * FROM Products WHERE id=?", (id,))
 
     if check_user.fetchone() is None:
@@ -31,6 +33,8 @@ def get_add_products(id, title, description, price, cursor=None):
 
 
 def get_all_products(cursor=None):
+    connection = sqlite3.connect("database.db")
+    cursor = connection.cursor()
     cursor.execute("SELECT * FROM Products")
     total = cursor.fetchall()
     for prod in total:
