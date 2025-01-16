@@ -165,5 +165,7 @@ async def send_confirm_message(call: types.CallbackQuery):
 #     await message.answer(f'Введите команду /start, чтобы начать общение.')
 
 
+# for i in range(1,5):
+#     get_add_products(i,f'Продукт{i}', f'Описание{i}', 100*i)
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)

@@ -35,7 +35,7 @@ def get_add_products(id, title, description, price, cursor=None):
 def get_all_products(cursor=None):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM Products")
+    # cursor.execute("SELECT * FROM Products")
     total = cursor.fetchall()
     for prod in total:
         print(prod)
@@ -44,3 +44,4 @@ def get_all_products(cursor=None):
     connection.close()
 
 get_all_products()
+
