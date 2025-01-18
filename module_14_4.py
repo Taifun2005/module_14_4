@@ -123,6 +123,7 @@ async def inform(message):
 async def kupit(message: types.Message):
     await get_buying_list(message)
 
+
 async def get_buying_list(message: types.Message):
     products = get_all_products()
     if not products:
@@ -131,19 +132,12 @@ async def get_buying_list(message: types.Message):
         return
     response = "Список товаров:\n"
     for product in products:
-        response += f"Название: {product[2]} | Описание: {product[1]} | Цена: {product[3]} руб.\n"
+        response = f"Название: {product[2]} | Описание: {product[1]} | Цена: {product[3]} руб.\n"
+        await message.answer(response)
         with open(f'files1\product{product[0]}.jpg', "rb") as img:
             await message.answer_photo(img, )
-    await message.answer(response)
+    # await message.answer(response)
 
-
-# async def get_buying_list(message: types.Message):
-#     get_buying_list()
-#     await message.answer(f"Название: {title} | Описание: {description} | Цена: {price}", )
-#     # await message.answer(f"Название: Product{i} | Описание: описание {i} | Цена: {i * 100}", )
-#     with open(f'files1\product{i}.jpg', "rb") as img:
-#         await message.answer_photo(img, )
-#     await message.answer("Выберите продукт для покупки:", reply_markup=kb3)
 
 @dp.callback_query_handler(text="product_buying")
 async def handle_product_buying(call: types.CallbackQuery):
@@ -154,22 +148,6 @@ async def handle_product_buying(call: types.CallbackQuery):
 async def send_confirm_message(call: types.CallbackQuery):
     await call.message.answer("Вы успешно приобрели продукт!")
     await call.answer()  # Закрыть уведомление
-
-
-# @dp.message_handler(text="О нас")
-# async def price(message):
-#     with open('files\Kisya.png', "rb")as img:
-#          await message.answer_photo(img, texts.about, reply_markup=stat_kb)
-#     await message.answer(texts.about, reply_markup=stat_kb)
-
-# @dp.message_handler()
-# async def all_message(message):
-#     print("Введите команду /start, чтобы начать общение.")
-#     await message.answer(f'Введите команду /start, чтобы начать общение.')
-
-
-# for i in range(1,5):
-#     get_add_products(i,f'Продукт{i}', f'Описание{i}', 100*i)
 
 
 if __name__ == "__main__":

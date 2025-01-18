@@ -2,7 +2,6 @@ import sqlite3
 from itertools import product
 
 
-
 def initiate_db():
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -18,8 +17,6 @@ def initiate_db():
     connection.close()
 
 
-
-
 def get_add_products(id, title, description, price):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -32,6 +29,7 @@ def get_add_products(id, title, description, price):
     connection.commit()
     connection.close()
 
+
 def get_all_products(cursor=None):
     connection = sqlite3.connect("database.db")
     cursor = connection.cursor()
@@ -43,5 +41,5 @@ def get_all_products(cursor=None):
     connection.commit()
     connection.close()
 
-get_all_products()
 
+get_all_products()
