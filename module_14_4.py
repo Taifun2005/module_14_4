@@ -131,7 +131,9 @@ async def get_buying_list(message: types.Message):
         return
     response = "Список товаров:\n"
     for product in products:
-        response += f"Название: {product[1]} | Описание: {product[2]} | Цена: {product[3]} руб.\n"
+        response += f"Название: {product[2]} | Описание: {product[1]} | Цена: {product[3]} руб.\n"
+        with open(f'files1\product{product[0]}.jpg', "rb") as img:
+            await message.answer_photo(img, )
     await message.answer(response)
 
 
