@@ -39,7 +39,7 @@ def get_all_products(cursor=None):
     total = cursor.fetchall()
     for prod in total:
         print(prod)
-
+    return total
     connection.commit()
     connection.close()
 
