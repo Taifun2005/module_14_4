@@ -126,6 +126,7 @@ async def kupit(message: types.Message):
 async def get_buying_list(message: types.Message):
     products = get_all_products()
     if not products:
+        print(products)
         await message.answer("Список товаров пуст.")
         return
     response = "Список товаров:\n"
@@ -167,5 +168,7 @@ async def send_confirm_message(call: types.CallbackQuery):
 
 # for i in range(1,5):
 #     get_add_products(i,f'Продукт{i}', f'Описание{i}', 100*i)
+
+
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
